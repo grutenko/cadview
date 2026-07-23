@@ -1,0 +1,61 @@
+
+set(SOURCES
+  ./block/cv_block.c
+  ./block/cv_block_attr_def.c
+  ./block/cv_rtree.c
+  ./color/cv_aci.c
+  ./compat/litecad.c
+  ./drawing/cv_drawing.c
+  ./entities/cv_arc.c
+  ./entities/cv_arctext.c
+  ./entities/cv_block_ref.c
+  ./entities/cv_block_ref_attr.c
+  ./entities/cv_circle.c
+  ./entities/cv_construction_line.c
+  ./entities/cv_ellipse.c
+  ./entities/cv_entity.c
+  ./entities/cv_entity_options.c
+  ./entities/cv_entity_xdata.c
+  ./entities/cv_hatch.c
+  ./entities/cv_line.c
+  ./entities/cv_mline.c
+  ./entities/cv_mtext.c
+  ./entities/cv_point.c
+  ./entities/cv_polyline.c
+  ./entities/cv_polyline_vertex.c
+  ./entities/cv_shape.c
+  ./entities/cv_text.c
+  ./event/cv_event.c
+  ./font/cv_font.c
+  ./font/cv_lcf.c
+  ./font/utf8proc.c
+  ./named_objects/cv_dimstyle.c
+  ./named_objects/cv_layer.c
+  ./named_objects/cv_linetype.c
+  ./named_objects/cv_named_object.c
+  ./named_objects/cv_pointstyle.c
+  ./named_objects/cv_mline_style.c
+  ./object/cv_object.c
+  ./object/cv_object_global_props.c
+  ./platform/cv_platform_font_direct_write.c
+  ./platform/cv_platform_font_fontconfig.c
+  ./platform/cv_platform_window_gtk.c
+  ./platform/cv_platform_window_win32.c
+  ./platform/gl.c
+  ./render/cv_renderer.c
+  ./scene/cv_line_tess.c
+  ./scene/cv_scene.c
+  ./scene/cv_scene_atlas.c
+  ./scene/cv_scene_dc.c
+  ./scene/cv_scene_unit.c
+  ./scene/tess2/bucketalloc.c
+  ./scene/tess2/dict.c
+  ./scene/tess2/geom.c
+  ./scene/tess2/mesh.c
+  ./scene/tess2/sweep.c
+  ./scene/tess2/tess.c
+  ./window/cv_window.c)
+  
+add_library(cadview SHARED ${SOURCES})
+set_target_properties(cadview PROPERTIES DEBUG_POSTFIX "d")
+target_link_libraries(cadview PRIVATE harfbuzz harfbuzz-gpu harfbuzz-raster)

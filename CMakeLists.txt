@@ -1,5 +1,26 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(cadview C)
-
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+project(cadview C CXX)
+
+set(CMAKE_POSITION_INDEPENDENT_CODE ON CACHE BOOL "" FORCE)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC" CACHE STRING "" FORCE)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC" CACHE STRING "" FORCE)
+set(HB_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(HB_BUILD_UTILS OFF CACHE BOOL "" FORCE)
+set(HB_BUILD_SUBSET OFF CACHE BOOL "" FORCE)
+set(HB_BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+
+add_subdirectory(harfbuzz)
+add_subdirectory(src)
+
+if (UNIX AND NOT APPLE)
+    find_package(PkgConfig REQUIRED)
+    find_package(OpenGL REQUIRED)
+    pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
+    target_include_directories(cadview PRIVATE ${GTK3_INCLUDE_DIRS})
+    target_compile_options(cadview PRIVATE ${GTK3_CFLAGS_OTHER})
+    target_link_directories(cadview PRIVATE ${GTK3_LIBRARY_DIRS})
+    target_link_libraries(cadview PRIVATE ${GTK3_LIBRARIES} OpenGL::GL)
+    target_compile_definitions(cadview PRIVATE CV_PLATFORM_LINUX CV_PLATFORM_GTK3)
+endif()
