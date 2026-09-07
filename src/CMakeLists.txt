@@ -5,6 +5,7 @@ set(SOURCES
   ./block/cv_rtree.c
   ./color/cv_aci.c
   ./compat/litecad.c
+  ./commands/cv_command.c
   ./drawing/cv_drawing.c
   ./entities/cv_arc.c
   ./entities/cv_arctext.c

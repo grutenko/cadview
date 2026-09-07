@@ -57,7 +57,7 @@ typedef struct cv_entity {
   uint32_t priority;
 } cv_entity_t;
 
-void cv_entity_setup(cv_entity_t *ent, int type, cv_entity_vtable_t *vtable, cv_object_prop_t *props, cv_block_t *block);
+void cv_entity_setup(cv_entity_t *ent, int type, cv_object_def_t *def, cv_block_t *block);
 
 cv_variant_t _cv_entity_prop_get_id(cv_object_t *obj, cv_object_prop_t *prop);
 cv_variant_t _cv_entity_prop_get_type(cv_object_t *obj, cv_object_prop_t *prop);

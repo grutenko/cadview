@@ -41,10 +41,9 @@ void _cv_table_prop_set_float2(cv_object_t *obj, cv_object_prop_t *prop, cv_vari
 void _cv_table_prop_set_float3(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) {}
 void _cv_table_prop_set_float4(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) {}
 
-void cv_named_object_setup(cv_named_object_t *nobj, cv_drawing_t *drawing, int type, cv_object_prop_t *props, cv_object_vtable_t *vtable) {
+void cv_named_object_setup(cv_named_object_t *nobj, cv_drawing_t *drawing, int type, cv_object_def_t *def) {
   memset(nobj, 0, sizeof(cv_named_object_t));
-  nobj->_obj.props = props;
-  nobj->_obj.vtable = vtable;
+  nobj->_obj._def = def;
   nobj->type = type;
   nobj->drawing = drawing;
 }

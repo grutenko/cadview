@@ -10,4 +10,6 @@ typedef struct cv_block_attr_def {
   char *default_value;
 } cv_block_attr_def_t;
 
+cv_block_attr_def_t *cv_block_attr_def_alloc();
+
 #endif

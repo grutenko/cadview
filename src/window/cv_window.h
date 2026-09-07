@@ -18,6 +18,10 @@ typedef struct cv_window {
   cv_block_t *block;
   cv_drawing_t *drawing;
   cv_renderer_t *renderer;
+  cv_scene_t *scene_underlay;
+  cv_scene_t *scene_overlay;
+  cv_renderer_t *renderer_underlay;
+  cv_renderer_t *renderer_overlay;
   cv_camera_2d_t camera;
   cv_viewport_t viewport;
   cv_window_t *prev;

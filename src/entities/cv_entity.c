@@ -324,10 +324,9 @@ void _cv_entity_prop_set_xstr(cv_object_t *obj, cv_object_prop_t *prop, cv_varia
 
 static uint64_t last_ID = 0ULL;
 
-void cv_entity_setup(cv_entity_t *ent, int type, cv_entity_vtable_t *vtable, cv_object_prop_t *props, cv_block_t *block) {
+void cv_entity_setup(cv_entity_t *ent, int type, cv_object_def_t *def, cv_block_t *block) {
   memset(ent, 0, sizeof(cv_entity_t));
-  ent->_obj.props = props;
-  ent->_obj.vtable = (cv_object_vtable_t *)vtable;
+  ent->_obj._def = def;
   ent->block = block;
   ent->type = type;
   ent->id = last_ID++;

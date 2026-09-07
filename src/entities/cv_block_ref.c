@@ -78,10 +78,12 @@ static void _build(cv_entity_t *ent, double zoom_factor, cv_scene_dc_t *dc) {}
 
 static cv_entity_vtable_t _vtable = {._obj = {.destroy = _destroy}, .build = _build};
 
+static cv_object_def_t _def = {.props = _props, .vtable = (cv_object_vtable_t *)&_vtable};
+
 cv_block_ref_t *cv_block_ref_alloc() { return malloc(sizeof(cv_block_ref_t)); }
 
 void cv_block_ref_init(cv_block_ref_t *ref, cv_block_t *block, cv_block_t *ref_block, cv_vec2_t move, cv_vec2_t scale, float angle) {
-  cv_entity_setup((cv_entity_t *)ref, LC_ENT_BLOCKREF, &_vtable, _props, block);
+  cv_entity_setup((cv_entity_t *)ref, LC_ENT_BLOCKREF, &_def, block);
   ref->block = ref_block;
   ref->move[0] = move[0];
   ref->move[1] = move[1];

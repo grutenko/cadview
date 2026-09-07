@@ -7,6 +7,8 @@
 
 #define __(o) ((cv_polyline_vertex_t *)(o))
 
+static inline void modify_parent(cv_object_t *ver) { ((cv_entity_t *)__(ver)->polyline)->flags |= CV_ENTITY_MODIFIED; }
+
 static cv_variant_t _get_x(cv_object_t *obj, cv_object_prop_t *attr) { return CV_VARIANT_FLOAT(__(obj)->pos[0]); }
 static cv_variant_t _get_y(cv_object_t *obj, cv_object_prop_t *attr) { return CV_VARIANT_FLOAT(__(obj)->pos[1]); }
 static cv_variant_t _get_z(cv_object_t *obj, cv_object_prop_t *attr) { return CV_VARIANT_FLOAT(0.0f); }
@@ -17,11 +19,11 @@ static cv_variant_t _get_first(cv_object_t *obj, cv_object_prop_t *attr) { retur
 static cv_variant_t _get_last(cv_object_t *obj, cv_object_prop_t *attr) { return CV_VARIANT_BOOL(__(obj)->flags & CV_POLYLINE_VERTEX_LAST); }
 static void _set_x(cv_object_t *obj, cv_object_prop_t *attr, cv_variant_t value) {
   __(obj)->pos[0] = value.float_;
-  ((cv_entity_t *)__(obj)->polyline)->flags |= CV_ENTITY_MODIFIED;
+  modify_parent(obj);
 }
 static void _set_y(cv_object_t *obj, cv_object_prop_t *attr, cv_variant_t value) {
   __(obj)->pos[1] = value.float_;
-  ((cv_entity_t *)__(obj)->polyline)->flags |= CV_ENTITY_MODIFIED;
+  modify_parent(obj);
 }
 static void _set_z(cv_object_t *obj, cv_object_prop_t *attr, cv_variant_t value) {}
 static void _set_fix(cv_object_t *obj, cv_object_prop_t *attr, cv_variant_t value) {
@@ -29,11 +31,11 @@ static void _set_fix(cv_object_t *obj, cv_object_prop_t *attr, cv_variant_t valu
     __(obj)->flags |= CV_POLYLINE_VERTEX_FIX;
   else
     __(obj)->flags &= ~CV_POLYLINE_VERTEX_FIX;
-  ((cv_entity_t *)__(obj)->polyline)->flags |= CV_ENTITY_MODIFIED;
+  modify_parent(obj);
 }
 static void _set_radius(cv_object_t *obj, cv_object_prop_t *attr, cv_variant_t value) {
   __(obj)->radius = value.float_;
-  ((cv_entity_t *)__(obj)->polyline)->flags |= CV_ENTITY_MODIFIED;
+  modify_parent(obj);
 }
 
 static cv_object_prop_t _attrs[] = {CV_OBJECT_DEFINE_FLOAT(LC_PROP_VER_X, _get_x, _set_x),
@@ -49,10 +51,10 @@ static cv_object_prop_t _attrs[] = {CV_OBJECT_DEFINE_FLOAT(LC_PROP_VER_X, _get_x
 static void _destroy(cv_object_t *obj) {}
 
 static cv_object_vtable_t _vtable = {.destroy = _destroy};
+static cv_object_def_t _def = {.props = _attrs, .vtable = (cv_object_vtable_t *)&_vtable};
 
 void cv_polyline_vertex_init(cv_polyline_vertex_t *vertex, cv_polyline_t *polyline, double x, double y, uint32_t index, uint32_t flags) {
-  vertex->_obj.props = _attrs;
-  vertex->_obj.vtable = &_vtable;
+  vertex->_obj._def = &_def;
   vertex->flags = flags;
   vertex->polyline = polyline;
   vertex->index = index;

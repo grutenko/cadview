@@ -7,7 +7,7 @@ typedef struct cv_vertex {
   float normal[2];
   float textureCooord[2];
   uint8_t color[4];
-  int atlasOffset;
+  uint32_t atlasOffset;
 } cv_vertex_t;
  
 #endif

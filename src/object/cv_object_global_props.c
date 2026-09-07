@@ -444,6 +444,8 @@ static cv_object_prop_t _props[] = {CV_OBJECT_DEFINE_STRING_RO(LC_PROP_G_REGCODE
                                     CV_OBJECT_DEFINE_END()};
 static cv_object_vtable_t _vtable = {.destroy = _destroy};
 
+static cv_object_def_t _def = {.props = _props, .vtable = &_vtable};
+
 static struct {
   cv_object_t _obj;
   char *regcode;
@@ -538,6 +540,6 @@ static struct {
   int ras_fill;
   int ras_color;
   int ras_noprint;
-} _global_props = {._obj = {.props = _props, .vtable = &_vtable}};
+} _global_props = {._obj = {._def = &_def}};
 
 cv_object_t *cv_object_global_attrs_get_ptr() { return (cv_object_t *)&_global_props; }

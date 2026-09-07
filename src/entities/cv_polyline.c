@@ -125,11 +125,12 @@ static cv_object_prop_t _props[] = {CV_ENTITY_DEFINE_PROPS(),
                                     CV_OBJECT_DEFINE_BOOL_RO(LC_PROP_PLINE_CW, _prop_get_cw),
                                     CV_OBJECT_DEFINE_BOOL_RO(LC_PROP_PLINE_CCW, _prop_get_ccw),
                                     CV_OBJECT_DEFINE_END()};
+static cv_object_def_t _def = {.props = _props, .vtable = (cv_object_vtable_t *)&_vtable};
 
 cv_polyline_t *cv_polyline_alloc() { return malloc(sizeof(cv_polyline_t)); }
 
 void cv_polyline_init(cv_polyline_t *polyline, cv_block_t *block) {
-  cv_entity_setup((cv_entity_t *)polyline, LC_ENT_POLYLINE, &_vtable, _props, block);
+  cv_entity_setup((cv_entity_t *)polyline, LC_ENT_POLYLINE, &_def, block);
   polyline->fit = LC_PLFIT_NONE;
   polyline->count = 0;
   polyline->vertices = NULL;

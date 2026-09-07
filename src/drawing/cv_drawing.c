@@ -15,13 +15,13 @@ static void _destroy(cv_object_t *obj) {}
 
 static cv_object_prop_t _props[] = {CV_OBJECT_DEFINE_END()};
 static cv_object_vtable_t _vtable = {.destroy = _destroy};
+static cv_object_def_t _def = {.props = _props, .vtable = &_vtable};
 
 cv_drawing_t *cv_drawing_alloc() { return malloc(sizeof(cv_drawing_t)); }
 
 void cv_drawing_init(cv_drawing_t *drawing) {
   memset(drawing, 0, sizeof(cv_drawing_t));
-  drawing->_obj.props = _props;
-  drawing->_obj.vtable = &_vtable;
+  drawing->_obj._def = &_def;
   drawing->msp = cv_block_alloc();
   drawing->layer0 = cv_layer_alloc();
   drawing->linetype_cont = cv_linetype_alloc();

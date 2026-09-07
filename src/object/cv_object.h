@@ -8,9 +8,12 @@ typedef struct cv_object cv_object_t;
 typedef struct cv_object_vtable {
   void (*destroy)(cv_object_t *obj);
 } cv_object_vtable_t;
-typedef struct cv_object {
+typedef struct cv_object_def {
   cv_object_prop_t *props;
   cv_object_vtable_t *vtable;
+} cv_object_def_t;
+typedef struct cv_object {
+  cv_object_def_t *_def;
 } cv_object_t;
 
 #define CV_CAST(ptr_, type_) ((type_ *)(ptr_))

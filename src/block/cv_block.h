@@ -12,11 +12,10 @@ typedef struct cv_block {
   cv_named_object_t _nobj;
   cv_scene_t *scene;
   cv_block_attr_def_t *attrdef;
-  size_t attrdef_count;
   cv_entity_t **ents;
-  size_t ents_count;
   double x;
   double y;
+  char *layout_name;
   double paper_x0;
   double paper_y0;
   double xmin;
@@ -28,13 +27,24 @@ typedef struct cv_block {
   double selymin;
   double selymax;
   double unitscale;
+  double vislef;
+  double visright;
+  double visbot;
+  double vistop;
+  uint32_t attrdef_count;
+  uint32_t ents_count;
+  uint32_t selents_count;
+  uint32_t layout_order;
+  uint32_t paper_size;
   int standard;
   int ufscaling;
   int units;
   int paper;
+  int paper_orient;
   int paper_width;
   int paper_height;
   int modelspace;
+  int hidden;
 } cv_block_t;
 
 cv_block_t *cv_block_alloc();
@@ -65,5 +75,6 @@ typedef union cv_block_query_arg {
 int cv_block_query(cv_block_t *block, cv_block_query_field_t field, cv_block_query_arg_t arg, cv_entity_t **result);
 int cv_block_add_entity(cv_block_t *block, cv_entity_t *ent);
 void cv_block_remove_entity(cv_block_t *block, cv_entity_t *ent);
+void cv_block_update(cv_block_t *block);
 
 #endif

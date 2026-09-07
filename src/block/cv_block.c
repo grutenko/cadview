@@ -19,19 +19,16 @@ static cv_variant_t _get_id(cv_object_t *obj, cv_object_prop_t *prop) {
   cv_object_prop_get_value(obj, LC_PROP_TABLE_ID, prop->type, &value);
   return value;
 }
-
 static cv_variant_t _get_name(cv_object_t *obj, cv_object_prop_t *prop) {
   cv_variant_t value;
   cv_object_prop_get_value(obj, LC_PROP_TABLE_NAME, CV_OBJECT_PROP_STRING, &value);
   return value;
 }
-
 static cv_variant_t _get_descr(cv_object_t *obj, cv_object_prop_t *prop) {
   cv_variant_t value;
   cv_object_prop_get_value(obj, LC_PROP_TABLE_DESCR, CV_OBJECT_PROP_STRING, &value);
   return value;
 }
-
 static cv_variant_t _get_x(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->x); }
 static cv_variant_t _get_y(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->y); }
 static cv_variant_t _get_ufscaling(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(__(obj)->ufscaling); }
@@ -39,54 +36,74 @@ static cv_variant_t _get_units(cv_object_t *obj, cv_object_prop_t *prop) { retur
 static cv_variant_t _get_unitscale(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->unitscale); }
 static cv_variant_t _get_model(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(__(obj)->modelspace); }
 static cv_variant_t _get_paper(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(__(obj)->paper); }
-static cv_variant_t _get_standard(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_layout_name(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_layout_order(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_hidden(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_nents(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_nselents(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_xmin(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_ymin(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_xmax(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_ymax(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_xcen(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_ycen(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_dx(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_dy(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_attribs(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_vislef(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_visrig(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_vistop(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_visbot(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_selxmin(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_selymin(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_selxmax(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_selymax(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_selxcen(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_selycen(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_x0(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_y0(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_paper_size(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_paper_orient(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_paper_w(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-static cv_variant_t _get_paper_h(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(0); }
-
+static cv_variant_t _get_standard(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(__(obj)->standard); }
+static cv_variant_t _get_layout_name(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_STRING(__(obj)->layout_name); }
+static cv_variant_t _get_layout_order(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_INT(__(obj)->layout_order); }
+static cv_variant_t _get_hidden(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(__(obj)->hidden); }
+static cv_variant_t _get_nents(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_INT(__(obj)->ents_count); }
+static cv_variant_t _get_nselents(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_INT(__(obj)->selents_count); }
+static cv_variant_t _get_xmin(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->xmin); }
+static cv_variant_t _get_ymin(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->ymin); }
+static cv_variant_t _get_xmax(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->xmax); }
+static cv_variant_t _get_ymax(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->ymax); }
+static cv_variant_t _get_xcen(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->xmin + (__(obj)->xmax - __(obj)->xmin) * 0.5f); }
+static cv_variant_t _get_ycen(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->ymin + (__(obj)->ymax - __(obj)->ymin) * 0.5f); }
+static cv_variant_t _get_dx(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->x); }
+static cv_variant_t _get_dy(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->y); }
+static cv_variant_t _get_attribs(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(__(obj)->attrdef_count > 0); }
+static cv_variant_t _get_vislef(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->vislef); }
+static cv_variant_t _get_visrig(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->visright); }
+static cv_variant_t _get_vistop(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->vistop); }
+static cv_variant_t _get_visbot(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->visbot); }
+static cv_variant_t _get_selxmin(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->selxmin); }
+static cv_variant_t _get_selymin(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->selymin); }
+static cv_variant_t _get_selxmax(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->selxmax); }
+static cv_variant_t _get_selymax(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->selymax); }
+static cv_variant_t _get_selxcen(cv_object_t *obj, cv_object_prop_t *prop) {
+  return CV_VARIANT_FLOAT(__(obj)->selxmin + (__(obj)->selxmax - __(obj)->selxmin) * 0.5f);
+}
+static cv_variant_t _get_selycen(cv_object_t *obj, cv_object_prop_t *prop) {
+  return CV_VARIANT_FLOAT(__(obj)->selymin + (__(obj)->selymax - __(obj)->selymin) * 0.5f);
+}
+static cv_variant_t _get_x0(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->paper_x0); }
+static cv_variant_t _get_y0(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->paper_y0); }
+static cv_variant_t _get_paper_size(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_INT(__(obj)->paper_size); }
+static cv_variant_t _get_paper_orient(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_BOOL(__(obj)->paper_orient); }
+static cv_variant_t _get_paper_w(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->paper_width); }
+static cv_variant_t _get_paper_h(cv_object_t *obj, cv_object_prop_t *prop) { return CV_VARIANT_FLOAT(__(obj)->paper_height); }
 static void _set_name(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) {
   cv_object_prop_set_value(obj, LC_PROP_TABLE_NAME, CV_OBJECT_PROP_STRING, value);
 }
-
 static void _set_descr(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) {
   cv_object_prop_set_value(obj, LC_PROP_TABLE_DESCR, CV_OBJECT_PROP_STRING, value);
 }
-
-static void _set_x(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) {}
-static void _set_y(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) {}
-static void _set_ufscaling(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) {}
-static void _set_units(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) {}
-static void _set_layout_name(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) {}
-static void _set_layout_order(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) {}
-static void _set_x0(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) {}
-static void _set_y0(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) {}
+static void _set_x(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) { __(obj)->x = value.float_; }
+static void _set_y(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) { __(obj)->x = value.float_; }
+static void _set_ufscaling(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) { __(obj)->ufscaling = value.float_; }
+static void _set_units(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) { __(obj)->units = value.int_; }
+static void _set_layout_name(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) {
+  if (value.string) {
+    if (!__(obj)->layout_name) {
+      char *p = malloc(1);
+      if (!p) {
+        return;
+      }
+      p[0] = '\0';
+      __(obj)->layout_name = p;
+    }
+    if (strlen(__(obj)->layout_name) < strlen(value.string)) {
+      char *p = realloc(__(obj)->layout_name, strlen(value.string) + 1);
+      if (!p) {
+        return;
+      }
+      __(obj)->layout_name = p;
+    }
+    strcpy(__(obj)->layout_name, value.string);
+  }
+}
+static void _set_layout_order(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) { __(obj)->layout_order = value.int_; }
+static void _set_x0(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) { __(obj)->paper_x0 = value.float_; }
+static void _set_y0(cv_object_t *obj, cv_object_prop_t *prop, cv_variant_t value) { __(obj)->paper_y0 = value.float_; }
 
 static cv_object_prop_t _props[] = {CV_OBJECT_DEFINE_INT_RO(LC_PROP_BLOCK_ID, _get_id),
                                     CV_OBJECT_DEFINE_STRING_RO(LC_PROP_BLOCK_ID, _get_id),
@@ -129,12 +146,13 @@ static cv_object_prop_t _props[] = {CV_OBJECT_DEFINE_INT_RO(LC_PROP_BLOCK_ID, _g
                                     CV_OBJECT_DEFINE_FLOAT_RO(LC_PROP_PAPER_W, _get_paper_w),
                                     CV_OBJECT_DEFINE_FLOAT_RO(LC_PROP_PAPER_H, _get_paper_h)};
 static cv_object_vtable_t _vtable = {.destroy = _destroy};
+static cv_object_def_t _def = {.props = _props, .vtable = &_vtable};
 
 cv_block_t *cv_block_alloc() { return malloc(sizeof(cv_block_t)); }
 
 void cv_block_init(cv_block_t *block, cv_drawing_t *drawing) {
   memset(block, 0, sizeof(cv_block_t));
-  cv_named_object_setup((cv_named_object_t *)block, drawing, LC_OBJ_BLOCK, _props, &_vtable);
+  cv_named_object_setup((cv_named_object_t *)block, drawing, LC_OBJ_BLOCK, &_def);
 }
 
 void cv_block_init_modelspace(cv_block_t *block, cv_drawing_t *drawing) {

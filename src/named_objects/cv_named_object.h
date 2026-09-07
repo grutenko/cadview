@@ -1,10 +1,10 @@
 #ifndef cv_named_object_h
 #define cv_named_object_h
 
+#include "../compat/litecad.h"
 #include "../object/cv_object.h"
 #include "../object/cv_object_prop.h"
 #include "../object/cv_variant.h"
-#include "../compat/litecad.h"
 
 #include <stdint.h>
 
@@ -89,7 +89,7 @@ void _cv_table_prop_set_float4(cv_object_t *obj, cv_object_prop_t *prop, cv_vari
       CV_OBJECT_DEFINE_FLOAT(LC_PROP_TABLE_FLOAT3, _cv_table_prop_get_float3, _cv_table_prop_set_float3),                                                      \
       CV_OBJECT_DEFINE_FLOAT(LC_PROP_TABLE_FLOAT4, _cv_table_prop_get_float4, _cv_table_prop_set_float4)
 
-void cv_named_object_setup(cv_named_object_t *nobj, cv_drawing_t *drawing, int type, cv_object_prop_t *props, cv_object_vtable_t *vtable);
+void cv_named_object_setup(cv_named_object_t *nobj, cv_drawing_t *drawing, int type, cv_object_def_t *def);
 void cv_named_object_incref(cv_named_object_t *nobj);
 void cv_named_object_decref(cv_named_object_t *nobj);
 
